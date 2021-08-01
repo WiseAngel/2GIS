@@ -1,8 +1,9 @@
 from requests import request
-
+import pytest
 endpoint = 'https://regions-test.2gis.com/1.0/regions'
+values = [5, 10, 15]
 
-
+@pytest.mark.parametrize('value', values)
 def test_ps():
     print(endpoint)
     url = f'{endpoint}?page_size='
