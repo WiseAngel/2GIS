@@ -13,7 +13,7 @@ class SendRequest():
         response = request("GET", self.url)
         return response
 
-    # def send_get_request1(self):
-    #     url = f'{self.base_url}?{self.endpoint}={self.value}'
-    #     response = request("GET", url)
-    #     return response
+    def send_get_request_to_base_url(self):
+        url = self.base_url
+        response = request("GET", url)
+        return response
