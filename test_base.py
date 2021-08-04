@@ -1,5 +1,4 @@
 import pytest
-from deepdiff import DeepDiff
 
 from endpoints import *
 
