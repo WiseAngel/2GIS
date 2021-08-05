@@ -19,32 +19,56 @@ class SendRequest():
         response = request("GET", url)
         return response
     
-    def send_get_request_with_multiple_parameters(self, endpoint, value):
+    def send_get_request_with_multiple_parameters(self, endpoint: list, value: list):
         endpoints_arr = []
         for i, e in enumerate(endpoint):
             endpoints_arr.append(f'{e}={value[i]}')
         endpoints = '&'.join(endpoints_arr)
         url = f'{self.base_url}?{endpoints}'
         response = request("GET", url)
-        print(url)
-        print(response)
         return response
 
         
+class CountRegions():
+       
+    def __init__(self):
+        self.get_all_regions()
+        self.get_regions_without_duplicates()
 
-def count_regions_total():
     base_url = Locators.BASE_URL
-    regions = []
-    page = 1
-    while True:
-        response = request('GET', f'{base_url}?page={page}&page_size=15').json()
-        if not response['items']:
-            break
-        regions += [*response['items']]
-        page += 1 
-    regions_without_duplicates = list({str(i):i for i in regions}.values())
-    expected_total = len(regions_without_duplicates)
-    return expected_total
+    regions: list
+    regions_without_duplicates: list
+    country_code_without_duplicates: list
+    len_regions: int
+    len_country_codes: int
+    
+    def get_all_regions(self):
+        page = 1
+        regions = []
+        while True:
+            response = request('GET', f'{self.base_url}?page={page}&page_size=15').json()
+            if not response['items']:
+                break
+            regions += [*response['items']]
+            page += 1 
+        self.regions = regions
+        return self.regions
+
+    def get_regions_without_duplicates(self):
+        self.regions_without_duplicates = list({str(i):i for i in self.regions}.values())
+        return self.regions_without_duplicates
+
+    def get_country_codes(self):
+        self.country_code_without_duplicates = list({i['country']['code']:i for i in self.regions})
+        return self.country_code_without_duplicates 
+
+    def count_regions_total(self):
+        self.len_regions = len(self.regions_without_duplicates)
+        return self.len_regions
+
+    def count_country_code(self):
+        self.len_country_codes = len(self.country_code_without_duplicates)
+        return self.len_country_codes
 
 
 #############################################################################################################
@@ -65,7 +89,7 @@ def check_items_length(response, value=15):
 
 def check_total(response):
     total = Locators.TOTAL_REGIONS
-    total_key = list(Locators.TOTAL_REGIONS.keys())[0]
+    total_key = list(total.keys())[0]
     assert response[total_key] == total[total_key], \
         f'Значение {total_key} равно {response[total_key]}, ожидали {total[total_key]}'
 

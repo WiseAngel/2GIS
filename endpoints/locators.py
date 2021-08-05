@@ -7,7 +7,7 @@ class Locators():
                  'country_code': {'name': 'country_code',
                                   'values': {
                                       'positive': ['ru', 'kg', 'kz', 'cz'],
-                                      'negative': ['ru1', 'eu', 'zk', 'None', '', ' ', None, 1, -1, 0]}},
+                                      'negative': ['ru1', 'ua', 'RU', 'None', '', ' ', None, 1, -1, 0]}},
                  'q': {'name': 'q',
                        'values': {
                            'positive': ['Омск', 'Новоссибирск', 'Нов', 'рск', 'ОМСК', 'астана'],
