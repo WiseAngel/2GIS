@@ -15,5 +15,21 @@ class Locators():
                  'page': {'name': 'page',
                           'values': {
                               'positive': [1, 2, 3, 100],
-                              'negative': [1.1, -1, '', None]}}}
+                              'negative': [1.1, -1, '', ' ', None, 0]}}}
     TOTAL_REGIONS = {'total': 22}
+
+q_positive_values = Locators.ENDPOINTS['q']['values']['positive']
+q_negative_values = Locators.ENDPOINTS['q']['values']['negative']
+q_endpoint = Locators.ENDPOINTS['q']['name']
+
+page_positive_values = Locators.ENDPOINTS['page']['values']['positive']
+page_negative_values = Locators.ENDPOINTS['page']['values']['negative']
+page_endpoint = Locators.ENDPOINTS['page']['name']
+
+page_size_positive_values = Locators.ENDPOINTS['page_size']['values']['positive']
+page_size_negative_values = Locators.ENDPOINTS['page_size']['values']['negative']
+page_size_endpoint = Locators.ENDPOINTS['page_size']['name']
+
+country_code_positive_values = Locators.ENDPOINTS['country_code']['values']['positive']
+country_code_negative_values = Locators.ENDPOINTS['country_code']['values']['negative']
+country_code_endpoint = Locators.ENDPOINTS['country_code']['name']
