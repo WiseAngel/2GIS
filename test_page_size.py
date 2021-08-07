@@ -16,7 +16,7 @@ class TestPositiv():
     # Response status code 200
     def test_status_code_is_200(self, value):
         response = self.sr.send_get_request(page_size_endpoint, value)
-        status_code_is_200(response)
+        status_code_is_200(response, value)
     
     # Parameter total is equal to the total number of regions
     def test_total_count(self, value):
@@ -38,5 +38,5 @@ class TestNegativ():
     # Response status code 200    
     def test_status_code_is_200(self, value):
         response = self.sr.send_get_request(page_size_endpoint, value) 
-        status_code_is_200(response)
+        status_code_is_200(response, value)
    

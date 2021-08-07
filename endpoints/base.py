@@ -79,8 +79,8 @@ def check_body_padding(actual, expected):
     assert ddiff == {}, \
         f'Ожидаемое и фактическое тело ответа не совпадают. Несоответствия: {ddiff}'
 
-def status_code_is_200(response):
-    assert response.status_code == 200, f'status code в ответе: {response.status_code}. Ожидал: 200'
+def status_code_is_200(response, value='Нет данных'):
+    assert response.status_code == 200, f'{value} # status code в ответе: {response.status_code}. Ожидал: 200.'
 
 def check_items_length(response, value=15):
     response_len = len(response['items'])
