@@ -20,7 +20,7 @@ class DataGenerator():
                     v += v[:diff]
         return(value)
 
-    def bar(self, *value):
+    def generate_data(self, *value):
         max_len = self.get_max_len(value)
         list_by_number_of_endpoints = self.fill_list(max_len)
         equalized_lists_data  = self.equalize_length_of_lists(value)

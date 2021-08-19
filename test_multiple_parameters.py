@@ -5,8 +5,8 @@ from endpoints import *
 
 sr = SendRequest()
 dg = DataGenerator()
-v1 = dg.bar(page_size_positive_values, page_positive_values, q_positive_values )
-v = dg.bar(page_size_negative_values, page_negative_values)
+v1 = dg.generate_data(page_size_positive_values, page_positive_values, q_positive_values )
+v = dg.generate_data(page_size_negative_values, page_negative_values)
 
 @pytest.mark.parametrize('endpoint', [['page_size','page']])
 @pytest.mark.parametrize('value', [*v])
